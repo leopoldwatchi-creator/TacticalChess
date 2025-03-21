@@ -64,6 +64,7 @@ class EndgameStudy:
         self,
         arrangement: Tuple[int, ...],
         layout: str,
+        side: bool,
         white: Optional[bool] = None,
         bishop_color: Optional[bool] = None,
     ):
@@ -87,7 +88,7 @@ class EndgameStudy:
         for square, piece, color in zip(new_arrangement, piece_layout.pieces, piece_layout.colors):
             self.board.set_piece_at(square, chess.Piece(piece, not (white ^ color)))
 
-        self.board.turn = white
+        self.board.turn = not (white ^ side)
         self.starting_position = self.board.fen()
 
     def start_game(
@@ -100,7 +101,8 @@ class EndgameStudy:
         bishop_color: Optional[bool] = None,
     ) -> GameInfo:
         arrangement = self.draw_position(layout, side_pieces, dtm, dtz)
-        self.set_board_from_arrangement(arrangement, layout, white, bishop_color)
+        side = side_pieces == layout.split("v")[0]
+        self.set_board_from_arrangement(arrangement, layout, side, white, bishop_color)
         dtm = self.tablebase.probe_dtm(self.board)
         return GameInfo(fen=self.starting_position, dtm=dtm)
 

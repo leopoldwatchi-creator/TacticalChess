@@ -4,6 +4,7 @@ mkdir games
 mkdir json
 mkdir reviews
 mkdir tables
+mkdir tactics
 mkdir temp
 
 :: download pgn-extract

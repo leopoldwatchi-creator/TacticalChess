@@ -4,6 +4,7 @@ mkdir -p games
 mkdir -p json
 mkdir -p reviews
 mkdir -p tables
+mkdir -p tactics
 mkdir -p temp
 
 # create a virtual environment

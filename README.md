@@ -95,7 +95,13 @@ in `configuration.json`.
     ```bash
     python config.py paths.pgn_extract ./pgn-extract
     ```
-4. Create a virtual environment, install dependencies and run the server by:
+4. Install `npm` by:
+
+    ```bash
+    sudo apt-get install npm
+    ```
+
+5. Create a virtual environment, install dependencies and run the server by:
     ```bash
     source run.sh
     ```
